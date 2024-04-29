@@ -72,16 +72,12 @@ export default class ResizeSplitPlugin extends Plugin {
 			return false;
 		}
 
-		console.log(leftChild, rightChild)
-
 		if (!checking) {
 			const clip = (val: number) => Math.max(Math.min(val, 90), 10);
 			const leftDimension = clip(leftSize / (leftSize + rightSize) * 100);
 
 			const newLeftDimension = clip(Math.round((leftDimension + step * direction) / step) * step);
 			const newRightDimension = 100 - newLeftDimension;
-
-			console.log({ leftDimension, newLeftDimension })
 
 			leftChild.setDimension(newLeftDimension);
 			rightChild.setDimension(newRightDimension);
